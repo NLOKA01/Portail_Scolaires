@@ -1,0 +1,15 @@
+<div *ngIf="message" class="alert alert-success">{{ message }}</div>
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<div *ngIf="view === 'list'">
+  <button class="btn btn-primary mb-3" (click)="onAdd()">Ajouter un enseignant</button>
+  <app-enseignants-list #list (edit)="onEdit($event)" (detail)="onDetail($event)" (delete)="onDelete($event)"></app-enseignants-list>
+</div>
+<div *ngIf="view === 'form'">
+  <app-enseignants-form [initialData]="selectedEnseignant" (formSubmit)="onFormSubmit($event)"></app-enseignants-form>
+  <button class="btn btn-secondary mt-2" (click)="onCancel()">Annuler</button>
+</div>
+<div *ngIf="view === 'detail'">
+  <app-enseignants-detail [enseignant]="selectedEnseignant"></app-enseignants-detail>
+  <button class="btn btn-secondary mt-2" (click)="onCancel()">Retour</button>
+</div>

@@ -1,0 +1,28 @@
+<form [formGroup]="matiereForm" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Nom</label>
+      <input formControlName="nom" class="form-control" [class.is-invalid]="submitted && matiereForm.get('nom')?.invalid" />
+      <div *ngIf="submitted && matiereForm.get('nom')?.invalid" class="invalid-feedback">
+        Le nom est requis.
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Niveau</label>
+      <select formControlName="niveau" class="form-control" [class.is-invalid]="submitted && matiereForm.get('niveau')?.invalid">
+        <option value="">Sélectionner</option>
+        <option value="college">Collège</option>
+        <option value="lycee">Lycée</option>
+        <option value="tous">Tous</option>
+      </select>
+      <div *ngIf="submitted && matiereForm.get('niveau')?.invalid" class="invalid-feedback">
+        Le niveau est requis.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <textarea formControlName="description" class="form-control"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="matiereForm.invalid">Enregistrer</button>
+</form> 

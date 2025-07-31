@@ -1,0 +1,26 @@
+<form [formGroup]="documentForm" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Nom</label>
+      <input formControlName="nom" class="form-control" />
+      <div *ngIf="documentForm.get('nom')?.invalid && documentForm.get('nom')?.touched" class="text-danger">
+        Le nom est requis.
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Type</label>
+      <input formControlName="type" class="form-control" />
+      <div *ngIf="documentForm.get('type')?.invalid && documentForm.get('type')?.touched" class="text-danger">
+        Le type est requis.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Date</label>
+    <input type="date" formControlName="date" class="form-control" />
+    <div *ngIf="documentForm.get('date')?.invalid && documentForm.get('date')?.touched" class="text-danger">
+      La date est requise.
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="documentForm.invalid">Enregistrer</button>
+</form> 

@@ -1,0 +1,15 @@
+<div *ngIf="parent">
+  <h2>Détail du parent</h2>
+  <p><strong>Nom :</strong> {{ parent.user?.nom }}</p>
+  <p><strong>Prénom :</strong> {{ parent.user?.prenom }}</p>
+  <p><strong>Email :</strong> {{ parent.user?.email }}</p>
+  <p><strong>Téléphone :</strong> {{ parent.user?.telephone }}</p>
+  <p><strong>Adresse :</strong> {{ parent.user?.adresse }}</p>
+  <p><strong>Profession :</strong> {{ parent.profession }}</p>
+  <div *ngIf="parent.enfants && parent.enfants.length > 0">
+    <h4>Enfants :</h4>
+    <ul>
+              <li *ngFor="let e of parent.enfants">{{ e.user?.nom }} {{ e.user?.prenom }}</li>
+    </ul>
+  </div>
+</div> 

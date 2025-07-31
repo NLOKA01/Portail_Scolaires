@@ -1,0 +1,35 @@
+<div>
+  <h2>Liste des parents</h2>
+  <div *ngIf="loading" class="alert alert-info">Chargement...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Enfants</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of parents">
+        <td>{{ p.user?.nom }}</td>
+        <td>{{ p.user?.prenom }}</td>
+        <td>{{ p.user?.email }}</td>
+        <td>
+          <span *ngIf="p.enfants && p.enfants.length > 0; else noEnfant">
+            <span *ngFor="let e of p.enfants; let last = last">{{ e.user?.nom }} {{ e.user?.prenom }}<span *ngIf="!last">, </span></span>
+          </span>
+          <ng-template #noEnfant>-</ng-template>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="onEdit(p)">Éditer</button>
+          <button class="btn btn-sm btn-info" (click)="onDetail(p)">Détail</button>
+          <button class="btn btn-sm btn-danger" (click)="onDelete(p)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="!loading && parents.length === 0" class="alert alert-warning">Aucun parent trouvé.</div>
+</div> 

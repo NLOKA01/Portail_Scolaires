@@ -1,0 +1,88 @@
+<div class="dashboard-container">
+  <div class="header">
+    <h1>🎓 Espace Élève</h1>
+    <div class="user-info">
+      <span>Bienvenue, {{ currentUser?.nom }} {{ currentUser?.prenom }}</span>
+      <button (click)="logout()" class="logout-btn">Déconnexion</button>
+    </div>
+  </div>
+
+  <div class="content" *ngIf="!loading">
+    <div class="student-info">
+      <h2>Mes informations</h2>
+      <div class="info-card">
+        <div class="info-row">
+          <span class="info-label">Nom :</span>
+          <span>{{ currentUser?.nom }} {{ currentUser?.prenom }}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Email :</span>
+          <span>{{ currentUser?.email }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-section">
+      <h2>Mes dernières notes</h2>
+      <div class="notes-grid" *ngIf="recentNotes.length > 0; else noNotes">
+        <div class="note-card" *ngFor="let note of recentNotes">
+          <div class="note-header">
+            <div class="note-subject">{{ note.matiere?.nom }}</div>
+            <div class="note-value">{{ note.valeur }}/20</div>
+          </div>
+          <div class="note-details">
+            <span>Période : {{ note.periode }}</span>
+            <span>Type : {{ note.type_note }}</span>
+          </div>
+        </div>
+      </div>
+      <ng-template #noNotes>
+        <div class="no-data">
+          <p>Aucune note disponible</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="bulletins-section">
+      <h2>Mes bulletins</h2>
+      <div class="bulletins-grid" *ngIf="bulletins.length > 0; else noBulletins">
+        <div class="bulletin-card" *ngFor="let bulletin of bulletins">
+          <div class="bulletin-header">
+            <div class="bulletin-period">{{ bulletin.periode }}</div>
+            <div class="bulletin-date">{{ bulletin.date_edition | date:'dd/MM/yyyy' }}</div>
+          </div>
+          <div class="bulletin-content">
+            <div class="bulletin-stats">
+              <div class="stat">
+                <span class="stat-label">Moyenne générale :</span>
+                <span class="stat-value">{{ bulletin.moyenne_generale }}/20</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Rang dans la classe :</span>
+                <span class="stat-value">{{ bulletin.rang }}ème</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Mention :</span>
+                <span class="stat-value">{{ bulletin.mention }}</span>
+              </div>
+            </div>
+            <div class="bulletin-actions">
+              <button (click)="downloadBulletin(bulletin.id)" class="download-btn">
+                📥 Télécharger PDF
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noBulletins>
+        <div class="no-data">
+          <p>Aucun bulletin disponible pour le moment</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="loading" *ngIf="loading">
+    <p>Chargement en cours...</p>
+  </div>
+</div> 

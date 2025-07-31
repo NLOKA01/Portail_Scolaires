@@ -1,0 +1,59 @@
+/* Conteneur général */
+div[ng-reflect-ng-if="true"] {
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50;
+  }
+  
+  /* Titres */
+  h2 {
+    color: #5a3e85;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-size: 28px;
+    border-bottom: 2px solid #8e44ad;
+    padding-bottom: 6px;
+    letter-spacing: 0.03em;
+  }
+  
+  h4 {
+    color: #7d5ba6;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    font-size: 20px;
+    border-left: 4px solid #8e44ad;
+    padding-left: 12px;
+  }
+  
+  /* Paragraphes */
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  
+  /* Listes */
+  ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #4b3e70;
+    font-size: 15px;
+    margin-bottom: 0;
+  }
+  
+  li {
+    margin-bottom: 6px;
+  }
+  
+  /* Strong label */
+  p strong {
+    color: #6a4a8e;
+    font-weight: 600;
+  }
+  

@@ -1,0 +1,96 @@
+form {
+  max-width: 500px;
+  margin: 0 auto 24px auto;
+  background: #fff;
+  border-radius: 8px;
+  padding: 18px 12px 12px 12px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.absences-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  flex: 1 1 180px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #495057;
+  margin-bottom: 4px;
+}
+
+.form-control {
+  border: 1px solid #e3e6ec;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 0.98rem;
+  color: #222;
+  background: #f8fafc;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  outline: none;
+  background: #fff;
+}
+
+.form-error,
+.text-danger {
+  color: #dc3545;
+  font-size: 0.93rem;
+  margin-top: 2px;
+}
+
+.btn-action.edit {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-action.edit:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.btn-action.edit:disabled {
+  background-color: #a0c6f5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  form {
+    padding: 8px 4px;
+  }
+
+  .form-group label {
+    font-size: 0.93rem;
+  }
+
+  .form-control {
+    font-size: 0.93rem;
+    padding: 6px 8px;
+  }
+}

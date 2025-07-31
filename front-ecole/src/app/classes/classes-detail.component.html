@@ -1,0 +1,26 @@
+<div *ngIf="classe">
+  <h2>Détail de la classe</h2>
+  <p><strong>Niveau :</strong> {{ classe.niveau }}</p>
+  <p><strong>Nom :</strong> {{ classe.nom }}</p>
+  <p><strong>Capacité :</strong> {{ classe.capacite }}</p>
+  <p><strong>Année scolaire :</strong> {{ classe.annee_scolaire }}</p>
+  <p><strong>Description :</strong> {{ classe.description }}</p>
+  <div *ngIf="classe.eleves && classe.eleves.length > 0">
+    <h4>Élèves :</h4>
+    <ul>
+              <li *ngFor="let e of classe.eleves">{{ e.user?.nom }} {{ e.user?.prenom }}</li>
+    </ul>
+  </div>
+  <div *ngIf="classe.enseignants && classe.enseignants.length > 0">
+    <h4>Enseignants :</h4>
+    <ul>
+      <li *ngFor="let ens of classe.enseignants">{{ ens.user?.nom }} {{ ens.user?.prenom }}</li>
+    </ul>
+  </div>
+  <div *ngIf="classe.matieres && classe.matieres.length > 0">
+    <h4>Matières :</h4>
+    <ul>
+      <li *ngFor="let m of classe.matieres">{{ m.nom }} (Coeff: {{ m.coefficient }})</li>
+    </ul>
+  </div>
+</div> 

@@ -1,0 +1,34 @@
+<div>
+  <h2>Liste des notes</h2>
+  <div *ngIf="loading" class="alert alert-info">Chargement...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th>Élève</th>
+        <th>Matière</th>
+        <th>Note</th>
+        <th>Type</th>
+        <th>Période</th>
+        <th>Enseignant</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let n of notes">
+        <td>{{ n.eleve?.user?.nom }} {{ n.eleve?.user?.prenom }}</td>
+        <td>{{ n.matiere?.nom }}</td>
+        <td>{{ n.valeur }}</td>
+        <td>{{ n.type_note }}</td>
+        <td>{{ n.periode }}</td>
+        <td>{{ n.enseignant?.user?.nom }} {{ n.enseignant?.user?.prenom }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="onEdit(n)">Éditer</button>
+          <button class="btn btn-sm btn-danger" (click)="onDelete(n)">Supprimer</button>
+          <button class="btn btn-sm btn-info" (click)="onDetail(n)">Détail</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="!loading && notes.length === 0" class="alert alert-warning">Aucune note trouvée.</div>
+</div> 

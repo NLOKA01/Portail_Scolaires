@@ -1,0 +1,1281 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Portail Scolaire API",
+        "description": "Documentation de l'API du portail scolaire",
+        "contact": {
+            "email": "diabydaj@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/absences": {
+            "get": {
+                "tags": [
+                    "Absences"
+                ],
+                "summary": "Liste des absences",
+                "operationId": "b54d45f0d5b3eb84fcbc42c72bed408d",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Absences"
+                ],
+                "summary": "Créer une nouvelle absence",
+                "operationId": "643ad2101a5afd13087ef6ed2c5ff1cb",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "eleve_id",
+                                    "date",
+                                    "motif"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Absence créée"
+                    }
+                }
+            }
+        },
+        "/api/absences/{id}": {
+            "get": {
+                "tags": [
+                    "Absences"
+                ],
+                "summary": "Afficher une absence spécifique",
+                "operationId": "a243d6238afc2df1ce661ad38132c083",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "404": {
+                        "description": "Absence non trouvée"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Absences"
+                ],
+                "summary": "Mettre à jour une absence",
+                "operationId": "bfc6576ddf8a06c862bbef471d8b4da0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "date",
+                                    "motif"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Absence mise à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Absences"
+                ],
+                "summary": "Supprimer une absence",
+                "operationId": "25e317727636714a0612684ebf5319b2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Absence supprimée"
+                    }
+                }
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Inscription d'un nouvel utilisateur",
+                "operationId": "a718f172ff3ac464d723835815f8fb57",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom",
+                                    "prenom",
+                                    "adresse",
+                                    "telephone",
+                                    "email",
+                                    "password",
+                                    "role"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Utilisateur créé"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Connexion d'un utilisateur",
+                "operationId": "44212a9096e4b09358281e9ec8a0701d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Connexion réussie"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Déconnexion de l'utilisateur connecté",
+                "operationId": "79854151e609bd20032aa5aa4d5a35c0",
+                "responses": {
+                    "200": {
+                        "description": "Déconnexion réussie"
+                    }
+                }
+            }
+        },
+        "/api/me": {
+            "get": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Obtenir les informations de l'utilisateur connecté",
+                "operationId": "f606b7972b0f95109c9cd5b591061f41",
+                "responses": {
+                    "200": {
+                        "description": "Informations utilisateur"
+                    }
+                }
+            }
+        },
+        "/api/profile": {
+            "put": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Mettre à jour le profil de l'utilisateur connecté",
+                "operationId": "7dcd0ffad5362dbab3180780c8d85f85",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom",
+                                    "prenom",
+                                    "adresse",
+                                    "telephone",
+                                    "email"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Profil mis à jour"
+                    }
+                }
+            }
+        },
+        "/api/users/{userId}/toggle-status": {
+            "put": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Activer ou désactiver un utilisateur (admin)",
+                "operationId": "a473f1c2d1044b9fadee3ab0e666bf55",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Statut utilisateur mis à jour"
+                    }
+                }
+            }
+        },
+        "/api/invalidate-all-tokens": {
+            "post": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Invalider tous les tokens de l'utilisateur connecté",
+                "operationId": "f08245aada2bbfb4a9b985082f67a8fd",
+                "responses": {
+                    "200": {
+                        "description": "Tous les tokens ont été invalidés"
+                    }
+                }
+            }
+        },
+        "/api/bulletins": {
+            "get": {
+                "tags": [
+                    "Bulletins"
+                ],
+                "summary": "Liste des bulletins",
+                "operationId": "d0978bc68981b146f96f77a29027d8fc",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Bulletins"
+                ],
+                "summary": "Générer un nouveau bulletin",
+                "operationId": "b245848f5ce0b7d53146ea75f39e7c9e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "eleve_id",
+                                    "periode"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Bulletin généré"
+                    }
+                }
+            }
+        },
+        "/api/bulletins/{id}": {
+            "get": {
+                "tags": [
+                    "Bulletins"
+                ],
+                "summary": "Afficher un bulletin spécifique",
+                "operationId": "f3dfee80992f2c51eb7603837ff78297",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "404": {
+                        "description": "Bulletin non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Bulletins"
+                ],
+                "summary": "Mettre à jour un bulletin",
+                "operationId": "d5bb983914b1008e7c1b54e88f7ef2a9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "periode"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Bulletin mis à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Bulletins"
+                ],
+                "summary": "Supprimer un bulletin",
+                "operationId": "3bda0f4f8e8c16ead994951714df805a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Bulletin supprimé"
+                    }
+                }
+            }
+        },
+        "/api/eleves/{eleve}/bulletins": {
+            "get": {
+                "tags": [
+                    "Bulletins"
+                ],
+                "summary": "Liste des bulletins d'un élève",
+                "operationId": "3f0ed34193a7a5141baf0ef6904ea25a",
+                "parameters": [
+                    {
+                        "name": "eleve",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    }
+                }
+            }
+        },
+        "/api/classes": {
+            "get": {
+                "tags": [
+                    "Classes"
+                ],
+                "summary": "Liste des classes",
+                "operationId": "763ab5cd7e42f0b141e377992e285512",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Classes"
+                ],
+                "summary": "Créer une nouvelle classe",
+                "operationId": "3bd06243b7be8fa5cc547579269e7abc",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom",
+                                    "niveau",
+                                    "capacite"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Classe créée"
+                    }
+                }
+            }
+        },
+        "/api/classes/{id}": {
+            "get": {
+                "tags": [
+                    "Classes"
+                ],
+                "summary": "Afficher une classe spécifique",
+                "operationId": "db6729806429c01adfcfa0a23a906c9b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "404": {
+                        "description": "Classe non trouvée"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Classes"
+                ],
+                "summary": "Mettre à jour une classe",
+                "operationId": "f7e422ec165e56cad28c054596dca13a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom",
+                                    "niveau",
+                                    "capacite"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Classe mise à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Classes"
+                ],
+                "summary": "Supprimer une classe",
+                "operationId": "003038947746ec345266e9554cbf65ca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Classe supprimée"
+                    }
+                }
+            }
+        },
+        "/api/documents": {
+            "get": {
+                "tags": [
+                    "Documents"
+                ],
+                "summary": "Liste des documents",
+                "operationId": "3d2cba87c070891669e4a985a0765a66",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Documents"
+                ],
+                "summary": "Uploader un nouveau document",
+                "operationId": "79984c4c3ad5397e13f4099ef08b7da7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "eleve_id",
+                                    "fichier"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Document uploadé"
+                    }
+                }
+            }
+        },
+        "/api/documents/{id}": {
+            "get": {
+                "tags": [
+                    "Documents"
+                ],
+                "summary": "Afficher un document spécifique",
+                "operationId": "0f416a4a2613d5e0404787177e5f616e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "404": {
+                        "description": "Document non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Documents"
+                ],
+                "summary": "Mettre à jour un document",
+                "operationId": "ef456fd22dde448ced72df082442bbe4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "fichier"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Document mis à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Documents"
+                ],
+                "summary": "Supprimer un document",
+                "operationId": "f7ec9289575e161c314f857a73debf27",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Document supprimé"
+                    }
+                }
+            }
+        },
+        "/api/eleves": {
+            "get": {
+                "tags": [
+                    "Élèves"
+                ],
+                "summary": "Liste des élèves",
+                "operationId": "3f8e24fb18108f0deb15dfa293eaa7a6",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Élèves"
+                ],
+                "summary": "Créer un nouvel élève",
+                "operationId": "de63c08dd7e1c2074b962128f9e58127",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom",
+                                    "prenom",
+                                    "adresse",
+                                    "telephone",
+                                    "email",
+                                    "date_naissance",
+                                    "lieu_naissance",
+                                    "sexe",
+                                    "classe_id",
+                                    "parent_nom",
+                                    "parent_prenom",
+                                    "parent_adresse",
+                                    "parent_telephone",
+                                    "parent_email"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Élève créé"
+                    }
+                }
+            }
+        },
+        "/api/eleves/{id}": {
+            "get": {
+                "tags": [
+                    "Élèves"
+                ],
+                "summary": "Afficher un élève spécifique",
+                "operationId": "312c6407a0cc3cdf847ead762db40a7f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "404": {
+                        "description": "Élève non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Élèves"
+                ],
+                "summary": "Mettre à jour un élève",
+                "operationId": "f603e8d396b6d13b654859868702fdc8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom",
+                                    "prenom",
+                                    "adresse",
+                                    "telephone",
+                                    "email",
+                                    "date_naissance",
+                                    "lieu_naissance",
+                                    "sexe",
+                                    "classe_id"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Élève mis à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Élèves"
+                ],
+                "summary": "Supprimer un élève",
+                "operationId": "370f2b1523fb59334c25ce91085a705b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Élève supprimé"
+                    }
+                }
+            }
+        },
+        "/api/enseignants": {
+            "get": {
+                "tags": [
+                    "Enseignants"
+                ],
+                "summary": "Liste des enseignants",
+                "operationId": "2de505ec5b8936d58e885526570f9d1e",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Enseignants"
+                ],
+                "summary": "Créer un nouvel enseignant",
+                "operationId": "b63649a22e0c435b701cc16395785b1d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom",
+                                    "prenom",
+                                    "adresse",
+                                    "telephone",
+                                    "email",
+                                    "password",
+                                    "specialite",
+                                    "date_embauche",
+                                    "numero_identifiant"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Enseignant créé"
+                    }
+                }
+            }
+        },
+        "/api/enseignants/{id}": {
+            "get": {
+                "tags": [
+                    "Enseignants"
+                ],
+                "summary": "Afficher un enseignant spécifique",
+                "operationId": "3604d0b5863854d2f3aae0b30c5e1b63",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "404": {
+                        "description": "Enseignant non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Enseignants"
+                ],
+                "summary": "Mettre à jour un enseignant",
+                "operationId": "62ad537c342dc33310f166b825516722",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom",
+                                    "prenom",
+                                    "adresse",
+                                    "telephone",
+                                    "email",
+                                    "specialite",
+                                    "date_embauche",
+                                    "numero_identifiant"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Enseignant mis à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Enseignants"
+                ],
+                "summary": "Supprimer un enseignant",
+                "operationId": "712b167e8ecca6a82e354789b7e9bb3d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Enseignant supprimé"
+                    }
+                }
+            }
+        },
+        "/api/matieres": {
+            "get": {
+                "tags": [
+                    "Matières"
+                ],
+                "summary": "Liste des matières",
+                "operationId": "f1ca8f431e55e2e74ad8ced2c5134e95",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Matières"
+                ],
+                "summary": "Créer une nouvelle matière",
+                "operationId": "6aa1204e7f25a537b3eff8e3e54be869",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom",
+                                    "niveau"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Matière créée"
+                    }
+                }
+            }
+        },
+        "/api/matieres/{id}": {
+            "get": {
+                "tags": [
+                    "Matières"
+                ],
+                "summary": "Afficher une matière spécifique",
+                "operationId": "b3ee9e30f48f632bf7960dbe31acc4e2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "404": {
+                        "description": "Matière non trouvée"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Matières"
+                ],
+                "summary": "Mettre à jour une matière",
+                "operationId": "d10c6df969728fb1fb5b719d9ca86c9d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom",
+                                    "niveau"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Matière mise à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Matières"
+                ],
+                "summary": "Supprimer une matière",
+                "operationId": "ecec6866e7094ca5925a28efc2fe450e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Matière supprimée"
+                    }
+                }
+            }
+        },
+        "/api/notes": {
+            "get": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Liste des notes",
+                "operationId": "31d94e1a73c5841081427d96291f79eb",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Créer une nouvelle note",
+                "operationId": "458da422df3c58590326b82c9b2a7631",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "eleve_id",
+                                    "matiere_id",
+                                    "enseignant_id",
+                                    "valeur"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Note créée"
+                    }
+                }
+            }
+        },
+        "/api/notes/{id}": {
+            "get": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Afficher une note spécifique",
+                "operationId": "4fa8c3e75af9f004d3dfcba3c84337af",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "404": {
+                        "description": "Note non trouvée"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Mettre à jour une note",
+                "operationId": "679eda42ed903ef6362e5ed43099f538",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "valeur"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Note mise à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Supprimer une note",
+                "operationId": "5994aa49b06d7ac4dfaeab76c5b73306",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Note supprimée"
+                    }
+                }
+            }
+        },
+        "/api/eleves/{eleve}/notes": {
+            "get": {
+                "tags": [
+                    "Notes"
+                ],
+                "summary": "Liste des notes d'un élève",
+                "operationId": "1b0d6dce3f506adcf266c6632b42629c",
+                "parameters": [
+                    {
+                        "name": "eleve",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Absences",
+            "description": "Gestion des absences"
+        },
+        {
+            "name": "Authentification",
+            "description": "Gestion de l'authentification"
+        },
+        {
+            "name": "Bulletins",
+            "description": "Gestion des bulletins"
+        },
+        {
+            "name": "Classes",
+            "description": "Gestion des classes"
+        },
+        {
+            "name": "Documents",
+            "description": "Gestion des documents"
+        },
+        {
+            "name": "Élèves",
+            "description": "Gestion des élèves"
+        },
+        {
+            "name": "Enseignants",
+            "description": "Gestion des enseignants"
+        },
+        {
+            "name": "Matières",
+            "description": "Gestion des matières"
+        },
+        {
+            "name": "Notes",
+            "description": "Gestion des notes"
+        }
+    ]
+}

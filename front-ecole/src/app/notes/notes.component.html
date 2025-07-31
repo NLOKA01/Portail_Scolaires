@@ -1,0 +1,12 @@
+<div *ngIf="view === 'list'">
+  <button class="btn btn-primary mb-3" (click)="onAdd()">Ajouter une note</button>
+  <app-notes-list #list (edit)="onEdit($event)" (detail)="onDetail($event)"></app-notes-list>
+</div>
+<div *ngIf="view === 'form'">
+  <app-notes-form [initialData]="selectedNote" (formSubmit)="onFormSubmit($event)"></app-notes-form>
+  <button class="btn btn-secondary mt-2" (click)="onCancel()">Annuler</button>
+</div>
+<div *ngIf="view === 'detail'">
+  <app-notes-detail [note]="selectedNote"></app-notes-detail>
+  <button class="btn btn-secondary mt-2" (click)="onCancel()">Retour</button>
+</div>

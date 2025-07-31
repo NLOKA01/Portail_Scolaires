@@ -1,0 +1,6 @@
+<div *ngIf="absence">
+  <h2>Détail de l'absence</h2>
+  <p><strong>Élève :</strong> {{ absence.eleve }}</p>
+  <p><strong>Date :</strong> {{ absence.date | date:'dd/MM/yyyy' }}</p>
+  <p><strong>Motif :</strong> {{ absence.motif }}</p>
+</div> 

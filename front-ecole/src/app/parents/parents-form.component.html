@@ -1,0 +1,42 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Nom</label>
+    <input formControlName="nom" class="form-control" [class.is-invalid]="submitted && parentForm.get('nom')?.invalid" />
+    <div *ngIf="submitted && parentForm.get('nom')?.invalid" class="invalid-feedback">
+      Le nom est requis.
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Prénom</label>
+    <input formControlName="prenom" class="form-control" [class.is-invalid]="submitted && parentForm.get('prenom')?.invalid" />
+    <div *ngIf="submitted && parentForm.get('prenom')?.invalid" class="invalid-feedback">
+      Le prénom est requis.
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Adresse</label>
+    <input formControlName="adresse" class="form-control" [class.is-invalid]="submitted && parentForm.get('adresse')?.invalid" />
+    <div *ngIf="submitted && parentForm.get('adresse')?.invalid" class="invalid-feedback">
+      L'adresse est requise.
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Téléphone</label>
+    <input formControlName="telephone" class="form-control" [class.is-invalid]="submitted && parentForm.get('telephone')?.invalid" />
+    <div *ngIf="submitted && parentForm.get('telephone')?.invalid" class="invalid-feedback">
+      Téléphone invalide.
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input formControlName="email" class="form-control" [class.is-invalid]="submitted && parentForm.get('email')?.invalid" />
+    <div *ngIf="submitted && parentForm.get('email')?.invalid" class="invalid-feedback">
+      Email invalide.
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Profession</label>
+    <input formControlName="profession" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="parentForm.invalid">Enregistrer</button>
+</form> 

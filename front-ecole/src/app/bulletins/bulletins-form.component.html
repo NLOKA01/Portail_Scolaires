@@ -1,0 +1,42 @@
+<form [formGroup]="bulletinForm" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Élève</label>
+      <input formControlName="eleve" class="form-control" />
+      <div *ngIf="bulletinForm.get('eleve')?.invalid && bulletinForm.get('eleve')?.touched" class="text-danger">
+        L'élève est requis.
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Classe</label>
+      <input formControlName="classe" class="form-control" />
+      <div *ngIf="bulletinForm.get('classe')?.invalid && bulletinForm.get('classe')?.touched" class="text-danger">
+        La classe est requise.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Période</label>
+      <input formControlName="periode" class="form-control" />
+      <div *ngIf="bulletinForm.get('periode')?.invalid && bulletinForm.get('periode')?.touched" class="text-danger">
+        La période est requise.
+      </div>
+    </div>
+    <div class="form-group col-md-3">
+      <label>Moyenne générale</label>
+      <input formControlName="moyenne_generale" class="form-control" type="number" />
+      <div *ngIf="bulletinForm.get('moyenne_generale')?.invalid && bulletinForm.get('moyenne_generale')?.touched" class="text-danger">
+        La moyenne est requise.
+      </div>
+    </div>
+    <div class="form-group col-md-3">
+      <label>Rang</label>
+      <input formControlName="rang" class="form-control" type="number" />
+      <div *ngIf="bulletinForm.get('rang')?.invalid && bulletinForm.get('rang')?.touched" class="text-danger">
+        Le rang est requis.
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="bulletinForm.invalid">Enregistrer</button>
+</form> 

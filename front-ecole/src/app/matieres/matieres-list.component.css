@@ -1,0 +1,149 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  }
+  
+  thead {
+    background: #7c3aed; /* violet */
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 14px;
+  }
+  
+  tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.2s ease;
+  }
+  
+  tbody tr:hover {
+    background-color: #f3e8ff;
+  }
+  
+  tbody td {
+    padding: 12px 18px;
+    font-size: 14px;
+    color: #374151;
+  }
+  
+  .alert {
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .alert-info {
+    background-color: #dbeafe;
+    color: #2563eb;
+    border: 1px solid #93c5fd;
+  }
+  
+  .alert-danger {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fca5a5;
+  }
+  
+  .alert-warning {
+    background-color: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+  }
+  
+  button.btn {
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin-right: 6px;
+  }
+  
+  button.btn-primary {
+    background-color: #7c3aed;
+    color: #fff;
+  }
+  
+  button.btn-primary:hover {
+    background-color: #9333ea;
+  }
+  
+  button.btn-danger {
+    background-color: #ef4444;
+    color: #fff;
+  }
+  
+  button.btn-danger:hover {
+    background-color: #dc2626;
+  }
+  
+  button.btn-info {
+    background-color: #3b82f6;
+    color: #fff;
+  }
+  
+  button.btn-info:hover {
+    background-color: #2563eb;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+  
+    thead tr {
+      display: none;
+    }
+  
+    tbody tr {
+      margin-bottom: 20px;
+      border-radius: 10px;
+      background: #f9f9ff;
+      box-shadow: 0 3px 8px rgba(124, 58, 237, 0.1);
+      padding: 15px;
+    }
+  
+    tbody td {
+      padding-left: 50%;
+      position: relative;
+      text-align: left;
+      font-size: 14px;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    tbody td::before {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      width: 45%;
+      white-space: nowrap;
+      font-weight: 700;
+      color: #7c3aed;
+    }
+  
+    tbody td:nth-of-type(1)::before { content: "Nom"; }
+    tbody td:nth-of-type(2)::before { content: "Description"; }
+    tbody td:nth-of-type(3)::before { content: "Niveau"; }
+    tbody td:nth-of-type(4)::before { content: "Actions"; }
+  
+    button.btn {
+      margin: 4px 0 0 0;
+      width: 100%;
+    }
+  }
+  

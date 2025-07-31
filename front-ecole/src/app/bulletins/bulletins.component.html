@@ -1,0 +1,14 @@
+<div *ngIf="snackbarMessage" class="alert alert-success">{{ snackbarMessage }}</div>
+
+<div *ngIf="view === 'list'">
+  <button (click)="onAdd()">Ajouter un bulletin</button>
+  <app-bulletins-list #list (edit)="onEdit($event)" (detail)="onDetail($event)"></app-bulletins-list>
+</div>
+<div *ngIf="view === 'form'">
+  <app-bulletins-form [initialData]="selectedBulletin" (formSubmit)="onFormSubmit($event)"></app-bulletins-form>
+  <button (click)="onCancel()">Annuler</button>
+</div>
+<div *ngIf="view === 'detail'">
+  <app-bulletins-detail [bulletin]="selectedBulletin"></app-bulletins-detail>
+  <button (click)="onCancel()">Retour</button>
+</div>

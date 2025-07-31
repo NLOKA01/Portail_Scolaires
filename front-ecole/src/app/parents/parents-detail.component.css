@@ -1,0 +1,44 @@
+/* Style pour le détail du parent */
+.parent-detail {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #34495e;
+  }
+  
+  .parent-detail h2 {
+    color: #16a085;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid #16a085;
+    padding-bottom: 6px;
+  }
+  
+  .parent-detail p {
+    font-size: 1rem;
+    margin: 8px 0;
+    line-height: 1.4;
+  }
+  
+  .parent-detail strong {
+    color: #16a085;
+    font-weight: 600;
+    width: 110px;
+    display: inline-block;
+  }
+  
+  .parent-detail ul {
+    margin-top: 12px;
+    padding-left: 1.2rem;
+    list-style-type: disc;
+    color: #2c3e50;
+  }
+  
+  .parent-detail ul li {
+    margin-bottom: 6px;
+  }
+  

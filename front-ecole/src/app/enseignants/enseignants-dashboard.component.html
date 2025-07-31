@@ -1,0 +1,93 @@
+<div class="dashboard-container">
+  <div class="header">
+    <h1>🏫 Tableau de Bord Enseignant</h1>
+    <div class="user-info">
+      <span>Bienvenue, {{ currentUser?.nom }} {{ currentUser?.prenom }}</span>
+      <button (click)="logout()" class="logout-btn">Déconnexion</button>
+    </div>
+  </div>
+
+  <div class="stats-grid" *ngIf="!loading">
+    <div class="stat-card">
+      <div class="stat-icon">📚</div>
+      <div class="stat-content">
+        <div class="stat-value">{{ stats.classes }}</div>
+        <div class="stat-label">Classes</div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">📖</div>
+      <div class="stat-content">
+        <div class="stat-value">{{ stats.matieres }}</div>
+        <div class="stat-label">Matières</div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">📝</div>
+      <div class="stat-content">
+        <div class="stat-value">{{ stats.notesSaisies }}</div>
+        <div class="stat-label">Notes saisies</div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">📊</div>
+      <div class="stat-content">
+        <div class="stat-value">{{ stats.bulletinsGeneres }}</div>
+        <div class="stat-label">Bulletins générés</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <div class="quick-actions">
+      <h2>Actions rapides</h2>
+      <div class="action-buttons">
+        <button (click)="navigateTo('/notes')" class="action-btn">
+          <span class="btn-icon">📝</span>
+          <span>Saisir des notes</span>
+        </button>
+        <button (click)="navigateTo('/bulletins')" class="action-btn">
+          <span class="btn-icon">📊</span>
+          <span>Générer bulletins</span>
+        </button>
+        <button (click)="navigateTo('/classes')" class="action-btn">
+          <span class="btn-icon">👥</span>
+          <span>Voir mes classes</span>
+        </button>
+        <button (click)="navigateTo('/matieres')" class="action-btn">
+          <span class="btn-icon">📖</span>
+          <span>Mes matières</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="recent-activity">
+      <h2>Activité récente</h2>
+      <div class="activity-list" *ngIf="recentNotes.length > 0; else noActivity">
+        <div class="activity-item" *ngFor="let note of recentNotes">
+          <div class="activity-icon">📝</div>
+          <div class="activity-content">
+            <div class="activity-title">
+              Note {{ note.valeur }}/20 - {{ note.eleve?.user?.nom }} {{ note.eleve?.user?.prenom }}
+            </div>
+            <div class="activity-details">
+              {{ note.matiere?.nom }} - {{ note.periode }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noActivity>
+        <div class="no-activity">
+          <p>Aucune activité récente</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="loading" *ngIf="loading">
+    <p>Chargement en cours...</p>
+  </div>
+</div> 

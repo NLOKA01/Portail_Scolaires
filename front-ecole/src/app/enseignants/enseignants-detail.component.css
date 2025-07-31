@@ -1,0 +1,38 @@
+/* Conteneur principal */
+div[*ngIf] {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 24px 28px;
+    max-width: 480px;
+    margin: 20px auto;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50;
+  }
+  
+  /* Titre */
+  h2 {
+    color: #34495e;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #8e44ad;
+    padding-bottom: 8px;
+    user-select: none;
+  }
+  
+  /* Paragraphes */
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  
+  /* Labels en gras */
+  p strong {
+    color: #8e44ad;
+    font-weight: 700;
+    margin-right: 8px;
+    user-select: none;
+  }
+  

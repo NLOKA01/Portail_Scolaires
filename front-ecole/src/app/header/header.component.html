@@ -1,0 +1,16 @@
+<nav class="navbar navbar-light bg-white shadow-sm justify-content-end" (document:click)="closeDropdown()">
+  <ul class="navbar-nav flex-row align-items-center">
+    <li class="nav-item dropdown" *ngIf="isLoggedIn()" (click)="$event.stopPropagation()">
+      <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button"
+         [attr.aria-expanded]="dropdownOpen" (click)="toggleDropdown($event)">
+        <i class="fas fa-user-circle fa-lg mr-2"></i>
+        <span class="d-none d-md-inline">Mon compte</span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right show" *ngIf="dropdownOpen" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#" (click)="$event.preventDefault()">Profil</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#" (click)="logout(); $event.preventDefault()">Déconnexion</a>
+      </div>
+    </li>
+  </ul>
+</nav> 

@@ -1,0 +1,28 @@
+<div>
+  <h2>Liste des élèves</h2>
+  <div *ngIf="loading" class="alert alert-info">Chargement...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Classe</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of eleves">
+        <td>{{ e.user?.nom }}</td>
+        <td>{{ e.user?.prenom }}</td>
+        <td>{{ e.classe?.nom || '-' }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="onEdit(e)">Éditer</button>
+          <button class="btn btn-sm btn-info" (click)="onDetail(e)">Détail</button>
+          <button class="btn btn-sm btn-danger" (click)="onDelete(e)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="!loading && eleves.length === 0" class="alert alert-warning">Aucun élève trouvé.</div>
+</div> 

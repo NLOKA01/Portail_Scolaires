@@ -1,0 +1,49 @@
+<form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>Élève</label>
+      <input formControlName="eleve" class="form-control" [class.is-invalid]="submitted && noteForm.get('eleve')?.invalid" />
+      <div *ngIf="submitted && noteForm.get('eleve')?.invalid" class="invalid-feedback">
+        L'élève est requis.
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label>Matière</label>
+      <input formControlName="matiere" class="form-control" [class.is-invalid]="submitted && noteForm.get('matiere')?.invalid" />
+      <div *ngIf="submitted && noteForm.get('matiere')?.invalid" class="invalid-feedback">
+        La matière est requise.
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label>Note</label>
+      <input formControlName="valeur" type="number" class="form-control" [class.is-invalid]="submitted && noteForm.get('valeur')?.invalid" />
+      <div *ngIf="submitted && noteForm.get('valeur')?.invalid" class="invalid-feedback">
+        Note entre 0 et 20 requise.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>Type</label>
+      <input formControlName="type_note" class="form-control" [class.is-invalid]="submitted && noteForm.get('type_note')?.invalid" />
+      <div *ngIf="submitted && noteForm.get('type_note')?.invalid" class="invalid-feedback">
+        Type requis.
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label>Période</label>
+      <input formControlName="periode" class="form-control" [class.is-invalid]="submitted && noteForm.get('periode')?.invalid" />
+      <div *ngIf="submitted && noteForm.get('periode')?.invalid" class="invalid-feedback">
+        Période requise.
+      </div>
+    </div>
+    <div class="form-group col-md-4">
+      <label>Enseignant</label>
+      <input formControlName="enseignant" class="form-control" [class.is-invalid]="submitted && noteForm.get('enseignant')?.invalid" />
+      <div *ngIf="submitted && noteForm.get('enseignant')?.invalid" class="invalid-feedback">
+        Enseignant requis.
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="noteForm.invalid">Enregistrer</button>
+</form> 

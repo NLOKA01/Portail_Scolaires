@@ -1,0 +1,100 @@
+.absences-list-container {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.absences-title {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+  color: #333;
+  text-align: center;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.absences-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.absences-table thead {
+  background-color: #f2f2f2;
+}
+
+.absences-table th,
+.absences-table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.absences-table th {
+  color: #555;
+  font-weight: 600;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-btn {
+  border: none;
+  background: #f5f7fa;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #007bff;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 2px rgba(44, 62, 80, 0.1);
+  cursor: pointer;
+}
+
+.action-btn.edit:hover {
+  background: #e3f0ff;
+  color: #0056b3;
+}
+
+.action-btn.detail:hover {
+  background: #e6f7f7;
+  color: #17a2b8;
+}
+
+.action-btn.delete {
+  color: #dc3545;
+}
+
+.action-btn.delete:hover {
+  background: #ffeaea;
+  color: #a71d2a;
+}
+
+/* Responsive design */
+@media (max-width: 700px) {
+  .absences-table {
+    font-size: 0.9rem;
+    min-width: unset;
+  }
+
+  .absences-table th,
+  .absences-table td {
+    padding: 8px 6px;
+  }
+
+  .action-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 0.95rem;
+  }
+}

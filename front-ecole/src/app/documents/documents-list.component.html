@@ -1,0 +1,25 @@
+<div>
+  <h2>Liste des documents</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of documents">
+        <td>{{ d.nom }}</td>
+        <td>{{ d.type }}</td>
+        <td>{{ d.date }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="onEdit(d)">Éditer</button>
+          <button class="btn btn-sm btn-info" (click)="onDetail(d)">Détail</button>
+          <button class="btn btn-sm btn-danger" (click)="onDelete(d)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> 

@@ -1,0 +1,155 @@
+.dashboard-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #8e44ad;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+  }
+  
+  .header h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+  }
+  
+  .logout-btn {
+    background-color: #fff;
+    color: #8e44ad;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .logout-btn:hover {
+    background-color: #f1e6f5;
+  }
+  
+  .content h2 {
+    color: #8e44ad;
+    margin-bottom: 10px;
+  }
+  
+  .info-card,
+  .note-card,
+  .bulletin-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    padding: 15px 20px;
+    margin-bottom: 20px;
+  }
+  
+  .info-row {
+    display: flex;
+    margin-bottom: 8px;
+  }
+  
+  .info-label {
+    font-weight: bold;
+    width: 160px;
+    color: #555;
+  }
+  
+  .notes-grid,
+  .bulletins-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 20px;
+  }
+  
+  .note-card .note-header,
+  .bulletin-card .bulletin-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #8e44ad;
+    font-size: 16px;
+  }
+  
+  .note-details span,
+  .bulletin-content .stat {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .stat-label {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .stat-value {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .download-btn {
+    background-color: #8e44ad;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .download-btn:hover {
+    background-color: #732d91;
+  }
+  
+  .no-data {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+    font-style: italic;
+  }
+  
+  .loading {
+    text-align: center;
+    font-size: 16px;
+    color: #8e44ad;
+    padding: 30px 0;
+  }
+  
+  /* Liens généraux */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #9b59b6;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,109 @@
+<div class="bulletins-container">
+  <div class="header">
+    <h2>📊 Gestion des Bulletins</h2>
+    
+    <!-- Section téléchargement groupé -->
+    <div class="bulk-download-section">
+      <h3>Téléchargement groupé</h3>
+      <div class="bulk-form">
+        <select [(ngModel)]="selectedClasse" class="form-select">
+          <option value="0">Sélectionner une classe</option>
+          <option *ngFor="let classe of classes" [value]="classe.id">
+            {{ classe.nom }} ({{ classe.niveau }})
+          </option>
+        </select>
+        
+        <select [(ngModel)]="selectedPeriode" class="form-select">
+          <option value="">Sélectionner une période</option>
+          <option *ngFor="let periode of periodes" [value]="periode.value">
+            {{ periode.label }}
+          </option>
+        </select>
+        
+        <input type="text" [(ngModel)]="selectedAnnee" placeholder="Année scolaire (ex: 2024-2025)" class="form-input">
+        
+        <button (click)="downloadClassBulletins()" class="btn btn-primary">
+          📦 Télécharger tous les bulletins
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="loading" *ngIf="loading">
+      <p>Chargement des bulletins...</p>
+    </div>
+
+    <div class="error" *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+
+    <div class="bulletins-list" *ngIf="!loading && !error">
+      <div class="table-container">
+        <table class="bulletins-table">
+          <thead>
+            <tr>
+              <th>Élève</th>
+              <th>Classe</th>
+              <th>Période</th>
+              <th>Moyenne</th>
+              <th>Rang</th>
+              <th>Mention</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bulletin of bulletins">
+              <td>
+                {{ bulletin.eleve?.user?.nom }} {{ bulletin.eleve?.user?.prenom }}
+              </td>
+              <td>{{ bulletin.classe?.nom }}</td>
+              <td>
+                <span class="periode-badge">
+                  {{ bulletin.periode === 'trimestre_1' ? '1er Trim' :
+                     bulletin.periode === 'trimestre_2' ? '2ème Trim' :
+                     bulletin.periode === 'trimestre_3' ? '3ème Trim' :
+                     bulletin.periode === 'semestre_1' ? '1er Sem' : '2ème Sem' }}
+                </span>
+              </td>
+              <td>
+                <span class="moyenne" [class.excellent]="bulletin.moyenne_generale >= 15"
+                      [class.bon]="bulletin.moyenne_generale >= 12 && bulletin.moyenne_generale < 15"
+                      [class.moyen]="bulletin.moyenne_generale >= 10 && bulletin.moyenne_generale < 12"
+                      [class.faible]="bulletin.moyenne_generale < 10">
+                  {{ bulletin.moyenne_generale }}/20
+                </span>
+              </td>
+              <td>{{ bulletin.rang }}ème</td>
+              <td>
+                <span class="mention-badge" [class]="bulletin.mention?.toLowerCase()">
+                  {{ bulletin.mention }}
+                </span>
+              </td>
+              <td>{{ bulletin.date_edition | date:'dd/MM/yyyy' }}</td>
+              <td class="actions">
+                <button (click)="downloadPDF(bulletin.id)" class="btn btn-sm btn-success" title="Télécharger PDF">
+                  📥
+                </button>
+                <button (click)="onDetail(bulletin)" class="btn btn-sm btn-info" title="Voir détails">
+                  👁️
+                </button>
+                <button (click)="onEdit(bulletin)" class="btn btn-sm btn-warning" title="Modifier">
+                  ✏️
+                </button>
+                <button (click)="onDelete(bulletin)" class="btn btn-sm btn-danger" title="Supprimer">
+                  🗑️
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="no-data" *ngIf="bulletins.length === 0">
+        <p>Aucun bulletin disponible</p>
+      </div>
+    </div>
+  </div>
+</div> 

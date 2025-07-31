@@ -1,0 +1,67 @@
+.alert {
+    padding: 12px 20px;
+    background-color: #d1fae5; /* vert clair */
+    color: #065f46; /* vert foncé */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(6, 95, 70, 0.2);
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  /* Boutons communs */
+  button {
+    background-color: #7c3aed;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 16px;
+  }
+  
+  button:hover {
+    background-color: #9333ea;
+  }
+  
+  button:disabled {
+    background-color: #c7d2fe;
+    cursor: not-allowed;
+    color: #6b7280;
+  }
+  
+  /* Bouton d’annulation */
+  button[ng-reflect-ng-reflect-ng-reflect-ng-reflect-type='secondary'],
+  button.btn-secondary,
+  button[disabled] {
+    background-color: #6b7280;
+    color: white;
+  }
+  
+  button[ng-reflect-ng-reflect-ng-reflect-ng-reflect-type='secondary']:hover,
+  button.btn-secondary:hover {
+    background-color: #4b5563;
+  }
+  
+  /* Container principal */
+  div {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Pour espacer les boutons dans la vue form/detail */
+  button + button {
+    margin-left: 12px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    button {
+      width: 100%;
+      margin-bottom: 12px;
+    }
+  }
+  

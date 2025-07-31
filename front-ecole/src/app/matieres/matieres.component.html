@@ -1,0 +1,14 @@
+<div *ngIf="snackbarMessage" class="alert alert-success">{{ snackbarMessage }}</div>
+
+<div *ngIf="view === 'list'">
+  <button (click)="onAdd()">Ajouter une matière</button>
+  <app-matieres-list #list (edit)="onEdit($event)" (detail)="onDetail($event)"></app-matieres-list>
+</div>
+<div *ngIf="view === 'form'">
+  <app-matieres-form [initialData]="selectedMatiere" (formSubmit)="onFormSubmit($event)"></app-matieres-form>
+  <button (click)="onCancel()">Annuler</button>
+</div>
+<div *ngIf="view === 'detail'">
+  <app-matieres-detail [matiere]="selectedMatiere"></app-matieres-detail>
+  <button (click)="onCancel()">Retour</button>
+</div>

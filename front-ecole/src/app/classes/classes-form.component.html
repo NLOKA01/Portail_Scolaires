@@ -1,0 +1,39 @@
+<form [formGroup]="classeForm" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Niveau</label>
+      <input formControlName="niveau" class="form-control" [class.is-invalid]="submitted && classeForm.get('niveau')?.invalid" />
+      <div *ngIf="submitted && classeForm.get('niveau')?.invalid" class="invalid-feedback">
+        Le niveau est requis.
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Nom</label>
+      <input formControlName="nom" class="form-control" [class.is-invalid]="submitted && classeForm.get('nom')?.invalid" />
+      <div *ngIf="submitted && classeForm.get('nom')?.invalid" class="invalid-feedback">
+        Le nom est requis.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Capacité</label>
+      <input type="number" formControlName="capacite" class="form-control" [class.is-invalid]="submitted && classeForm.get('capacite')?.invalid" />
+      <div *ngIf="submitted && classeForm.get('capacite')?.invalid" class="invalid-feedback">
+        Capacité requise (min 1).
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Année scolaire</label>
+      <input formControlName="annee_scolaire" class="form-control" [class.is-invalid]="submitted && classeForm.get('annee_scolaire')?.invalid" />
+      <div *ngIf="submitted && classeForm.get('annee_scolaire')?.invalid" class="invalid-feedback">
+        L'année scolaire est requise.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <textarea formControlName="description" class="form-control"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="classeForm.invalid">Enregistrer</button>
+</form> 

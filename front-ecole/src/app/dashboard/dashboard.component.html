@@ -1,0 +1,71 @@
+<div *ngIf="isLoggedIn()">
+  <div class="dashboard-header">
+    <h1>Tableau de bord</h1>
+    <p>Statistiques globales de l'école</p>
+  </div>
+  <div class="dashboard-stats-grid">
+    <div class="stat-card eleves">
+      <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
+      <div class="stat-info">
+        <div class="stat-value">{{ stats.eleves }}</div>
+        <div class="stat-label">Élèves</div>
+      </div>
+    </div>
+    <div class="stat-card enseignants">
+      <div class="stat-icon"><i class="fas fa-users"></i></div>
+      <div class="stat-info">
+        <div class="stat-value">{{ stats.enseignants }}</div>
+        <div class="stat-label">Enseignants</div>
+      </div>
+    </div>
+    <div class="stat-card classes">
+      <div class="stat-icon"><i class="fas fa-chalkboard"></i></div>
+      <div class="stat-info">
+        <div class="stat-value">{{ stats.classes }}</div>
+        <div class="stat-label">Classes</div>
+      </div>
+    </div>
+    <div class="stat-card matieres">
+      <div class="stat-icon"><i class="fas fa-book"></i></div>
+      <div class="stat-info">
+        <div class="stat-value">{{ stats.matieres }}</div>
+        <div class="stat-label">Matières</div>
+      </div>
+    </div>
+    <div class="stat-card notes">
+      <div class="stat-icon"><i class="fas fa-clipboard-list"></i></div>
+      <div class="stat-info">
+        <div class="stat-value">{{ stats.notes }}</div>
+        <div class="stat-label">Notes</div>
+      </div>
+    </div>
+    <div class="stat-card bulletins">
+      <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+      <div class="stat-info">
+        <div class="stat-value">{{ stats.bulletins }}</div>
+        <div class="stat-label">Bulletins</div>
+      </div>
+    </div>
+    <div class="stat-card absences">
+      <div class="stat-icon"><i class="fas fa-user-clock"></i></div>
+      <div class="stat-info">
+        <div class="stat-value">{{ stats.absences }}</div>
+        <div class="stat-label">Absences</div>
+      </div>
+    </div>
+    <div class="stat-card documents">
+      <div class="stat-icon"><i class="fas fa-folder-open"></i></div>
+      <div class="stat-info">
+        <div class="stat-value">{{ stats.documents }}</div>
+        <div class="stat-label">Documents</div>
+      </div>
+    </div>
+    <div class="stat-card parents">
+      <div class="stat-icon"><i class="fas fa-user"></i></div>
+      <div class="stat-info">
+        <div class="stat-value">{{ stats.parents }}</div>
+        <div class="stat-label">Parents</div>
+      </div>
+    </div>
+  </div>
+</div> 

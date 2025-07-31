@@ -1,0 +1,35 @@
+<form [formGroup]="enseignantForm" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Nom</label>
+      <input formControlName="nom" class="form-control" />
+      <div *ngIf="enseignantForm.get('nom')?.invalid && enseignantForm.get('nom')?.touched" class="text-danger">
+        Le nom est requis.
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Prénom</label>
+      <input formControlName="prenom" class="form-control" />
+      <div *ngIf="enseignantForm.get('prenom')?.invalid && enseignantForm.get('prenom')?.touched" class="text-danger">
+        Le prénom est requis.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Matière</label>
+      <input formControlName="matiere" class="form-control" />
+      <div *ngIf="enseignantForm.get('matiere')?.invalid && enseignantForm.get('matiere')?.touched" class="text-danger">
+        La matière est requise.
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Email</label>
+      <input formControlName="email" class="form-control" />
+      <div *ngIf="enseignantForm.get('email')?.invalid && enseignantForm.get('email')?.touched" class="text-danger">
+        Un email valide est requis.
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="enseignantForm.invalid">Enregistrer</button>
+</form> 

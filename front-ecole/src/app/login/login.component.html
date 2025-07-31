@@ -1,0 +1,45 @@
+<!-- Template Angular adapté avec le nouveau style -->
+<div class="login-container">
+  <div class="login-form">
+    <div class="brand">
+      <h1>PORTAL</h1>
+      <p>Service d'Authentification Central</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!-- Message d'erreur serveur -->
+      <div *ngIf="errorMessage" class="alert alert-danger server-error">
+        {{ errorMessage }}
+      </div>
+
+      <div class="form-group">
+        <label for="email">Adresse email</label>
+        <input id="email" type="email" formControlName="email" class="form-control" placeholder="votre@email.com">
+        <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" class="alert alert-danger">
+          <div *ngIf="loginForm.get('email')?.errors?.['required']">
+            L'email est requis.
+          </div>
+          <div *ngIf="loginForm.get('email')?.errors?.['email']">
+            Veuillez entrer une adresse email valide.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input id="password" type="password" formControlName="password" class="form-control" placeholder="••••••••">
+        <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="alert alert-danger">
+          <div *ngIf="loginForm.get('password')?.errors?.['required']">
+            Le mot de passe est requis.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Se connecter</button>
+    </form>
+
+    <div class="register-link">
+      <p>Vous n'avez pas de compte ? <a routerLink="/register">S'inscrire</a></p>
+    </div>
+  </div>
+</div>

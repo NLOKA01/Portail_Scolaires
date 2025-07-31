@@ -1,0 +1,52 @@
+<div class="register-container">
+  <div class="register-form">
+    <h2>Inscription</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input id="name" type="text" formControlName="name" class="form-control">
+        <div *ngIf="registerForm.get('name')?.invalid && (registerForm.get('name')?.dirty || registerForm.get('name')?.touched)" class="alert alert-danger">
+          <div *ngIf="registerForm.get('name')?.errors?.['required']">
+            Le nom est requis.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" class="form-control">
+        <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)" class="alert alert-danger">
+          <div *ngIf="registerForm.get('email')?.errors?.['required']">
+            L'email est requis.
+          </div>
+          <div *ngIf="registerForm.get('email')?.errors?.['email']">
+            Veuillez entrer une adresse email valide.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input id="password" type="password" formControlName="password" class="form-control">
+        <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)" class="alert alert-danger">
+          <div *ngIf="registerForm.get('password')?.errors?.['required']">
+            Le mot de passe est requis.
+          </div>
+          <div *ngIf="registerForm.get('password')?.errors?.['minlength']">
+            Le mot de passe doit contenir au moins 6 caractères.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password_confirmation">Confirmer le mot de passe</label>
+        <input id="password_confirmation" type="password" formControlName="password_confirmation" class="form-control">
+        <div *ngIf="registerForm.errors?.['mismatch'] && (registerForm.get('password_confirmation')?.dirty || registerForm.get('password_confirmation')?.touched)" class="alert alert-danger">
+          Les mots de passe ne correspondent pas.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">S'inscrire</button>
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+      </div>
+    </form>
+    <p class="mt-3">Vous avez déjà un compte ? <a routerLink="/login">Se connecter</a></p>
+  </div>
+</div>

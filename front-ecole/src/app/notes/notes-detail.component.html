@@ -1,0 +1,9 @@
+<div *ngIf="note">
+  <h2>Détail de la note</h2>
+  <p><strong>Élève :</strong> {{ note.eleve?.user?.nom }} {{ note.eleve?.user?.prenom }}</p>
+  <p><strong>Matière :</strong> {{ note.matiere?.nom }}</p>
+  <p><strong>Note :</strong> {{ note.valeur }}</p>
+  <p><strong>Type :</strong> {{ note.type_note }}</p>
+  <p><strong>Période :</strong> {{ note.periode }}</p>
+  <p><strong>Enseignant :</strong> {{ note.enseignant?.user?.nom }} {{ note.enseignant?.user?.prenom }}</p>
+</div> 
